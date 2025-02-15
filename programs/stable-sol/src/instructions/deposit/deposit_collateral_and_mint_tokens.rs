@@ -4,7 +4,7 @@ use anchor_spl::token_interface::{Mint, Token2022, TokenAccount};
 use pyth_solana_receiver_sdk::price_update::PriceUpdateV2;
 
 use crate::state::{Collateral, Config};
-use crate::utils::{check_collateral_ratio, constants, deposit_sol, mint_tokens};
+use crate::utils::{constants, deposit_sol, mint_tokens, validate_collateral_above_threshold};
 
 #[derive(Accounts)]
 pub struct DepositCollateralAndMintTokens<'info> {
@@ -70,7 +70,7 @@ pub fn handle_deposit_collateral_and_mint_tokens(
     collateral_account.lamport_balance = ctx.accounts.sol_account.lamports() + collateral_amount;
     collateral_account.minted_amount += mint_amount;
 
-    check_collateral_ratio(
+    validate_collateral_above_threshold(
         collateral_account,
         &ctx.accounts.config_account,
         &ctx.accounts.price_update,

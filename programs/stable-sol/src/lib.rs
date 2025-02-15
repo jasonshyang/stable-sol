@@ -56,4 +56,8 @@ pub mod stable_sol {
     ) -> Result<()> {
         handle_withdraw_collateral_and_burn_tokens(ctx, collateral_amount, burn_amount)
     }
+
+    pub fn liquidate(ctx: Context<Liquidate>, burn_amount: u64) -> Result<()> {
+        handle_liquidate(ctx, burn_amount)
+    }
 }

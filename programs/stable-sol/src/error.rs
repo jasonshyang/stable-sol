@@ -5,5 +5,5 @@ pub enum ErrorCode {
     #[msg("Invalid Price")]
     InvalidPrice,
     #[msg("Collateral Ratio Below Minimum")]
-    CollateralRatioTooLow
+    CollateralRatioTooLow,
 }

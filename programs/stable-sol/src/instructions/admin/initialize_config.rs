@@ -34,7 +34,6 @@ pub struct InitializeConfig<'info> {
     pub system_program: Program<'info, System>,
 }
 
-
 pub fn handle_initialize_config(
     ctx: Context<InitializeConfig>,
     liquidation_threshold: u64,

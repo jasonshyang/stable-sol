@@ -1,9 +1,9 @@
 use anchor_lang::prelude::*;
 
+pub mod error;
 mod instructions;
 pub mod state;
 pub mod utils;
-pub mod error;
 
 use instructions::*;
 
@@ -48,5 +48,12 @@ pub mod stable_sol {
     ) -> Result<()> {
         handle_deposit_collateral_and_mint_tokens(ctx, collateral_amount, mint_amount)
     }
-    
+
+    pub fn withdraw_collateral_and_burn_tokens(
+        ctx: Context<WithdrawCollateralAndBurnTokens>,
+        collateral_amount: u64,
+        burn_amount: u64,
+    ) -> Result<()> {
+        handle_withdraw_collateral_and_burn_tokens(ctx, collateral_amount, burn_amount)
+    }
 }

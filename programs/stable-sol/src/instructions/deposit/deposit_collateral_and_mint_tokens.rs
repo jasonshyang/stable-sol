@@ -60,10 +60,11 @@ pub fn handle_deposit_collateral_and_mint_tokens(
     let collateral_account = &mut ctx.accounts.collateral_account;
 
     if !collateral_account.is_initialized {
-        collateral_account.owner = ctx.accounts.user.key();
+        collateral_account.user = ctx.accounts.user.key();
         collateral_account.sol_account = ctx.accounts.sol_account.key();
         collateral_account.token_account = ctx.accounts.token_account.key();
         collateral_account.bump = ctx.bumps.collateral_account;
+        collateral_account.bump_sol_account = ctx.bumps.sol_account;
         collateral_account.is_initialized = true;
     }
 

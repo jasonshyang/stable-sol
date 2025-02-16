@@ -17,7 +17,7 @@ pub fn mint_tokens<'info>(
     let cpi_accounts = MintTo {
         mint: mint_account.to_account_info(),
         to: token_account.to_account_info(),
-        authority: token_account.to_account_info(),
+        authority: mint_account.to_account_info(),
     };
 
     let cpi_ctx =

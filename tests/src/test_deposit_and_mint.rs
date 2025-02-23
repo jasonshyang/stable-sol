@@ -40,7 +40,7 @@ fn test_deposit_and_mint() {
             mint_amount,
         })
         .send()
-        .expect("");
+        .expect("Deposit failed");
 
     println!("Deposit Transaction signature {}", deposit_tx);
 }

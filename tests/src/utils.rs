@@ -109,3 +109,23 @@ pub fn initialize_config(
         })
         .send()
 }
+
+pub fn update_config(
+    program: &Program<&Keypair>,
+    ctx: &TestContext,
+    liquidation_threshold: u64,
+    liquidation_bonus: u64,
+    min_collateral_ratio: u64,
+) -> Result<Signature, ClientError> {
+    program
+        .request()
+        .accounts(stable_sol::accounts::UpdateConfig {
+            config_account: ctx.config_account,
+        })
+        .args(stable_sol::instruction::UpdateConfig {
+            liquidation_threshold,
+            liquidation_bonus,
+            min_collateral_ratio,
+        })
+        .send()
+}

@@ -10,4 +10,5 @@ pub struct Config {
     pub min_collateral_ratio: u64,
     pub bump: u8,
     pub bump_mint: u8,
+    pub is_initialized: bool,
 }

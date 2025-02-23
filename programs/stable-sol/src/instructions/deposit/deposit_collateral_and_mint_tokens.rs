@@ -77,6 +77,8 @@ pub fn handle_deposit_collateral_and_mint_tokens(
         &ctx.accounts.price_update,
     )?;
 
+    msg!("validated");
+
     deposit_sol(
         collateral_amount,
         &ctx.accounts.user,

@@ -3,6 +3,7 @@ use anchor_spl::token_interface::{Mint, Token2022};
 
 use crate::state::Config;
 use crate::utils::constants;
+use crate::error::ErrorCode;
 
 #[derive(Accounts)]
 pub struct InitializeConfig<'info> {
@@ -40,6 +41,8 @@ pub fn handle_initialize_config(
     liquidation_bonus: u64,
     min_collateral_ratio: u64,
 ) -> Result<()> {
+    require!(!ctx.accounts.config_account.is_initialized, ErrorCode::ConfigAlreadyInitialized);
+
     *ctx.accounts.config_account = Config {
         authority: ctx.accounts.authority.key(),
         mint_account: ctx.accounts.mint_account.key(),
@@ -48,6 +51,7 @@ pub fn handle_initialize_config(
         min_collateral_ratio,
         bump: ctx.bumps.config_account,
         bump_mint: ctx.bumps.mint_account,
+        is_initialized: true,
     };
 
     Ok(())

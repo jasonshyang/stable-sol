@@ -7,7 +7,7 @@ pub mod utils;
 
 use instructions::*;
 
-declare_id!("8yY7WqCf3jy9DJTBYV7Dj1MpRrF69V5jvEkKTNTH4HaL");
+declare_id!("R27zfMYiacB7PNCtkrZkRCk5bgWnniLg1AaJbxkdBFm");
 
 #[program]
 pub mod stable_sol {
@@ -46,6 +46,7 @@ pub mod stable_sol {
         collateral_amount: u64,
         mint_amount: u64,
     ) -> Result<()> {
+        msg!("Deposit collateral and mint tokens");
         handle_deposit_collateral_and_mint_tokens(ctx, collateral_amount, mint_amount)
     }
 
@@ -60,4 +61,13 @@ pub mod stable_sol {
     pub fn liquidate(ctx: Context<Liquidate>, burn_amount: u64) -> Result<()> {
         handle_liquidate(ctx, burn_amount)
     }
+
+    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
+        msg!("Greetings from: {:?}", ctx.program_id);
+        Ok(())
+    }
 }
+
+
+#[derive(Accounts)]
+pub struct Initialize {}

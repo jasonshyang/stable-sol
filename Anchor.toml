@@ -5,7 +5,7 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-stable_sol = "8yY7WqCf3jy9DJTBYV7Dj1MpRrF69V5jvEkKTNTH4HaL"
+stable_sol = "R27zfMYiacB7PNCtkrZkRCk5bgWnniLg1AaJbxkdBFm"
 
 [registry]
 url = "https://api.apr.dev"
@@ -15,7 +15,8 @@ cluster = "Localnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]
-test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+test = "cargo test -- --nocapture"
+# test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
 
 [test]
 startup_wait = 5000

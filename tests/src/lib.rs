@@ -1,3 +1,6 @@
+#![cfg(test)]
+mod test_initialize_permissioned_account;
+
 #[cfg(test)]
 mod test_deposit_and_mint;
 

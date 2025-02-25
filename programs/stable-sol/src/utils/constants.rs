@@ -6,6 +6,7 @@ pub const CONFIG_ACCOUNT_SEED: &[u8] = b"config";
 pub const MINT_ACCOUNT_SEED: &[u8] = b"mint";
 pub const COLLATERAL_ACCOUNT_SEED: &[u8] = b"collateral";
 pub const SOL_ACCOUNT_SEED: &[u8] = b"sol";
+pub const PERMISSIONED_ACCOUNT_SEED: &[u8] = b"permissioned";
 
 #[constant]
 pub const MINT_DECIMALS: u8 = 6;

@@ -41,7 +41,8 @@ pub fn handle_initialize_config(
     liquidation_bonus: u64,
     min_collateral_ratio: u64,
 ) -> Result<()> {
-    require!(!ctx.accounts.config_account.is_initialized, ErrorCode::ConfigAlreadyInitialized);
+    
+    require!(!ctx.accounts.config_account.is_initialized, ErrorCode::AccountAlreadyInitialized);
 
     *ctx.accounts.config_account = Config {
         authority: ctx.accounts.authority.key(),

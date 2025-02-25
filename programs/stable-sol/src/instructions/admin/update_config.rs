@@ -5,10 +5,14 @@ use crate::utils::constants;
 
 #[derive(Accounts)]
 pub struct UpdateConfig<'info> {
+    #[account(mut)]
+    pub authority: Signer<'info>,
+
     #[account(
         mut,
         seeds = [constants::CONFIG_ACCOUNT_SEED],
         bump = config_account.bump,
+        has_one = authority
     )]
     pub config_account: Account<'info, Config>,
 }

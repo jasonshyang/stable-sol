@@ -120,6 +120,7 @@ pub fn update_config(
     program
         .request()
         .accounts(stable_sol::accounts::UpdateConfig {
+            authority: ctx.user.pubkey(),
             config_account: ctx.config_account,
         })
         .args(stable_sol::instruction::UpdateConfig {

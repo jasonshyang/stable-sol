@@ -62,12 +62,21 @@ pub mod stable_sol {
         handle_liquidate(ctx, burn_amount)
     }
 
-    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
-        msg!("Greetings from: {:?}", ctx.program_id);
-        Ok(())
+    pub fn initialize_permissioned_account(
+        ctx: Context<InitializePermissionedAccount>,
+        permissioned_user: Pubkey,
+        is_gatekeeper: bool,
+        is_minter: bool,
+        is_burner: bool,
+        is_liquidator: bool,
+    ) -> Result<()> {
+        handle_initialize_permissioned_account(
+            ctx,
+            permissioned_user,
+            is_gatekeeper,
+            is_minter,
+            is_burner,
+            is_liquidator,
+        )
     }
 }
-
-
-#[derive(Accounts)]
-pub struct Initialize {}
